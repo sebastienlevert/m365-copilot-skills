@@ -1,27 +1,16 @@
 {
   "name": "m365-copilot-skills",
+  "description": "A curated collection of reusable skills for working with Microsoft 365 Copilot",
   "owner": {
     "name": "sebastienlevert",
     "email": "noreply@github.com"
   },
   "plugins": [
     {
-      "name": "m365-agent-scaffolder",
-      "source": "./skills/m365-agent-scaffolder",
-      "description": "Quickly scaffolds new Microsoft 365 Copilot declarative agent projects using ATK CLI. Use when creating a new empty M365 Copilot agent project from scratch.",
-      "version": "1.0.0",
-      "author": {
-        "name": "sebastienlevert"
-      }
-    },
-    {
-      "name": "m365-agent-developer",
-      "source": "./skills/m365-agent-developer",
-      "description": "Designs, implements, and deploys Microsoft 365 Copilot agents using TypeSpec and ATK CLI. Provides architectural guidance, capability configuration, security patterns, and lifecycle management.",
-      "version": "1.0.0",
-      "author": {
-        "name": "sebastienlevert"
-      }
+      "name": "m365-copilot-skills",
+      "description": "A collection of skills to enhance Microsoft 365 Copilot capabilities, enabling seamless integration with Microsoft 365 services and APIs.",
+      "source": "./plugins/m365-copilot-skills",
+      "category": "development"
     }
   ]
 }

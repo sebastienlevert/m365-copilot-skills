@@ -8,7 +8,7 @@ import { homedir } from 'os';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const SKILLS_DIR = path.join(__dirname, '..', 'skills');
+const SKILLS_DIR = path.join(__dirname, '..', 'plugins', 'm365-copilot-skills', 'skills');
 const CLAUDE_SKILLS_DIR = path.join(homedir(), '.claude', 'skills');
 const WATCH_MODE = process.argv.includes('--watch');
 
