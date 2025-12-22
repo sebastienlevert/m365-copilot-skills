@@ -1,6 +1,6 @@
 # Microsoft 365 Copilot Skills
 
-A curated collection of reusable skills for working with Microsoft 365 services and APIs. These skills are designed to work with AI coding agents like Claude Code, GitHub Copilot, and other agent-based development tools.
+A curated collection of reusable skills for developing with Microsoft 365 Copilot. These skills are designed to work with AI coding agents like Claude Code, GitHub Copilot, and other agent-based development tools.
 
 ## What are Skills?
 
