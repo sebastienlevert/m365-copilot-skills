@@ -87,7 +87,7 @@ function parseFrontmatter(content) {
  */
 function validateSkill(skillName, results) {
   const skillDir = path.join(SKILLS_DIR, skillName);
-  const skillMdPath = path.join(skillDir, 'skills', 'SKILL.md');
+  const skillMdPath = path.join(skillDir, 'SKILL.md');
 
   // Check if SKILL.md exists
   if (!fs.existsSync(skillMdPath)) {

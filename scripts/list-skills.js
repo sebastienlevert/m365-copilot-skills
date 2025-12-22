@@ -39,7 +39,7 @@ function parseFrontmatter(content) {
  */
 function getSkillInfo(skillName) {
   const skillDir = path.join(SKILLS_DIR, skillName);
-  const skillMdPath = path.join(skillDir, 'skills', 'SKILL.md');
+  const skillMdPath = path.join(skillDir, 'SKILL.md');
 
   if (!fs.existsSync(skillMdPath)) {
     return {
