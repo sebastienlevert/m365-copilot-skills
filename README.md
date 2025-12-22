@@ -60,16 +60,10 @@ npm run clean
 
 ## Available Skills
 
-Skills will be organized by Microsoft 365 service area:
-
-- **Microsoft Graph**: Skills for working with Microsoft Graph API
-- **SharePoint**: SharePoint development and customization skills
-- **Teams**: Microsoft Teams app development skills
-- **Power Platform**: Power Apps, Power Automate, and Power BI skills
-- **Security & Compliance**: M365 security and compliance automation
-- **Azure**: Azure services integration with M365
-
-*Skills are being added incrementally. Check back soon for the first releases.*
+| Skill Name | Description | Link |
+|------------|-------------|------|
+| **m365-agent-scaffolder** | Quickly scaffolds new Microsoft 365 Copilot declarative agent projects using ATK CLI. Use when creating a new empty M365 Copilot agent project from scratch. | [SKILL.md](skills/m365-agent-scaffolder/SKILL.md) |
+| **m365-agent-developer** | Designs, implements, and deploys Microsoft 365 Copilot agents using TypeSpec and ATK CLI. Provides architectural guidance, capability configuration, security patterns, and lifecycle management. | [SKILL.md](skills/m365-agent-developer/SKILL.md) |
 
 ## Using Skills
 
@@ -172,20 +166,26 @@ The `SKILL.md` file contains the core instructions that AI agents use. It should
 ---
 name: skill-name
 description: Clear description of what this skill does and when to use it
-tags: [microsoft-365, graph-api, relevant-tags]
+metadata:
+   - authors:
+      - github-handle
 ---
 
 # Skill Name
 
-[Detailed instructions for the AI agent]
+Description of the skill and its purpose.
 
 ## When to Use This Skill
 - Scenario 1
 - Scenario 2
 
-## Key Concepts
-- Concept 1
-- Concept 2
+## Key References
+- Reference 1
+- Reference 2
+
+## Instructions
+- Step 1
+- Step 2
 
 ## Examples
 - Example 1

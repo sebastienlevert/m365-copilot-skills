@@ -88,7 +88,6 @@ function parseFrontmatter(content) {
 function validateSkill(skillName, results) {
   const skillDir = path.join(SKILLS_DIR, skillName);
   const skillMdPath = path.join(skillDir, 'SKILL.md');
-  const readmePath = path.join(skillDir, 'README.md');
 
   // Check if SKILL.md exists
   if (!fs.existsSync(skillMdPath)) {
@@ -123,17 +122,12 @@ function validateSkill(skillName, results) {
     );
   }
 
-  // Check for README.md
-  if (!fs.existsSync(readmePath)) {
-    results.addWarning(skillName, 'Missing recommended README.md file');
-  }
-
   // Check for key sections in SKILL.md
   const requiredSections = [
     'When to Use This Skill',
-    'Prerequisites',
     'Instructions',
-    'Best Practices',
+    'Examples',
+    'Best Practices'
   ];
 
   for (const section of requiredSections) {
