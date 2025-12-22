@@ -69,19 +69,40 @@ npm run clean
 
 ### With Claude Code
 
-1. Install the skills plugin:
+1. **Add the marketplace** (one-time setup):
    ```bash
    /plugin marketplace add sebastienlevert/m365-copilot-skills
    ```
 
-2. Install specific skills:
+2. **Install specific skills**:
    ```bash
-   /plugin install <skill-name>@m365-copilot-skills
+   # Install individual skills
+   /plugin install m365-agent-scaffolder@m365-copilot-skills
+   /plugin install m365-agent-developer@m365-copilot-skills
+
+   # Or install all skills at once
+   /plugin install @m365-copilot-skills
    ```
 
-3. Use the skill by referencing it in your conversation:
+3. **Use skills in your conversation**:
    ```bash
-   /<skill-name>
+   # Activate a skill
+   /m365-agent-scaffolder
+
+   # Or reference it naturally
+   "Use the M365 agent scaffolder skill to create a new project"
+   ```
+
+4. **Manage plugins**:
+   ```bash
+   # List installed plugins
+   /plugin list
+
+   # Update plugins
+   /plugin update m365-agent-scaffolder@m365-copilot-skills
+
+   # Uninstall plugins
+   /plugin uninstall m365-agent-scaffolder@m365-copilot-skills
    ```
 
 ### With GitHub Copilot
@@ -99,6 +120,33 @@ Most AI coding agents support custom instructions or prompt templates. You can:
 1. Copy the skill content from the `skills/` directory
 2. Paste it into your agent's custom instructions or system prompt
 3. Reference the skill when needed
+
+### Local Development
+
+If you're contributing to this repository or developing skills locally:
+
+```bash
+# Clone the repository
+git clone https://github.com/sebastienlevert/m365-copilot-skills.git
+cd m365-copilot-skills
+
+# Create a new skill
+npm run new
+
+# Sync your local skills to Claude Code
+npm run sync
+
+# Watch for changes and auto-sync
+npm run sync:watch
+
+# Test your skill in Claude Code
+# The skill will be available at ~/.claude/skills/your-skill-name
+```
+
+This approach is useful for:
+- Testing skills before publishing
+- Rapid iteration during development
+- Contributing new skills to the repository
 
 ## Creating Custom Skills
 
