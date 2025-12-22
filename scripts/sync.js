@@ -68,7 +68,7 @@ function getSkills() {
  * Sync a single skill to Claude skills directory
  */
 function syncSkill(skillName) {
-  const srcDir = path.join(SKILLS_DIR, skillName);
+  const srcDir = path.join(SKILLS_DIR, skillName, 'skills');
   const destDir = path.join(CLAUDE_SKILLS_DIR, skillName);
 
   try {

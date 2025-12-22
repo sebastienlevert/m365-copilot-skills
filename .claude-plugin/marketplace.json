@@ -1,54 +1,27 @@
 {
-  "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/schemas/marketplace.json",
   "name": "m365-copilot-skills",
-  "displayName": "Microsoft 365 Copilot Skills",
-  "description": "A curated collection of reusable skills for working with Microsoft 365 services and APIs. These skills enhance AI coding agents with domain-specific knowledge for M365 development.",
-  "version": "1.0.0",
-  "author": "Sebastien Levert",
-  "homepage": "https://github.com/sebastienlevert/m365-copilot-skills",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sebastienlevert/m365-copilot-skills.git"
+  "owner": {
+    "name": "sebastienlevert",
+    "email": "noreply@github.com"
   },
   "plugins": [
     {
       "name": "m365-agent-scaffolder",
-      "displayName": "M365 Agent Scaffolder",
+      "source": "./skills/m365-agent-scaffolder/skills",
       "description": "Quickly scaffolds new Microsoft 365 Copilot declarative agent projects using ATK CLI. Use when creating a new empty M365 Copilot agent project from scratch.",
       "version": "1.0.0",
-      "type": "skill",
-      "path": "skills/m365-agent-scaffolder",
-      "tags": ["microsoft-365", "copilot", "scaffolding", "atk-cli", "agent"],
-      "author": "Sebastien Levert"
+      "author": {
+        "name": "sebastienlevert"
+      }
     },
     {
       "name": "m365-agent-developer",
-      "displayName": "M365 Agent Developer",
+      "source": "./skills/m365-agent-developer/skills",
       "description": "Designs, implements, and deploys Microsoft 365 Copilot agents using TypeSpec and ATK CLI. Provides architectural guidance, capability configuration, security patterns, and lifecycle management.",
       "version": "1.0.0",
-      "type": "skill",
-      "path": "skills/m365-agent-developer",
-      "tags": ["microsoft-365", "copilot", "typespec", "atk-cli", "agent", "development"],
-      "author": "Sebastien Levert"
+      "author": {
+        "name": "sebastienlevert"
+      }
     }
-  ],
-  "categories": [
-    "Microsoft 365",
-    "Copilot Development",
-    "API Integration",
-    "Development Tools"
-  ],
-  "keywords": [
-    "microsoft-365",
-    "m365",
-    "copilot",
-    "microsoft-graph",
-    "sharepoint",
-    "teams",
-    "power-platform",
-    "azure",
-    "api",
-    "development"
-  ],
-  "license": "MIT"
+  ]
 }
