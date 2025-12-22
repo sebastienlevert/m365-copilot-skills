@@ -17,10 +17,46 @@ Skills follow the [Agent Skills specification](https://agentskills.io) and can b
 ```
 m365-copilot-skills/
 ├── skills/              # Collection of M365 skills (coming soon)
+├── scripts/            # Utility scripts for managing skills
 ├── template/           # Template for creating new skills
 ├── docs/              # Additional documentation
 └── .github/           # GitHub configuration and workflows
 ```
+
+## Quick Start
+
+This repository includes npm scripts to help you manage skills:
+
+```bash
+# Install dependencies (if any are added later)
+npm install
+
+# Create a new skill interactively
+npm run new
+
+# List all available skills
+npm run list
+
+# Validate all skills
+npm run validate
+
+# Sync skills to Claude Code (~/.claude/skills)
+npm run sync
+
+# Watch for changes and auto-sync
+npm run sync:watch
+
+# Remove synced skills from Claude
+npm run clean
+```
+
+### Development Workflow
+
+1. **Create a new skill**: `npm run new` - Follow the interactive prompts
+2. **Edit the skill**: Modify `skills/your-skill-name/SKILL.md` with your instructions
+3. **Validate**: `npm run validate` - Ensure your skill follows the correct format
+4. **Sync to Claude**: `npm run sync` - Copy skills to your Claude Code directory
+5. **Test**: Use the skill in Claude Code with `/<skill-name>`
 
 ## Available Skills
 
@@ -73,6 +109,50 @@ Most AI coding agents support custom instructions or prompt templates. You can:
 ## Creating Custom Skills
 
 Want to create your own M365 skill? Check out the [template](./template) directory for a starter template and the [CONTRIBUTING.md](./CONTRIBUTING.md) guide for detailed instructions.
+
+## NPM Scripts Reference
+
+### `npm run new`
+Interactive script to create a new skill from the template. Prompts for:
+- Skill display name
+- Description
+- Tags
+- Author name
+
+Creates a new skill directory with all necessary files pre-configured.
+
+### `npm run list`
+Lists all skills in the repository with their metadata:
+- Name and version
+- Description
+- Tags
+- Author
+
+### `npm run validate`
+Validates all skills to ensure they follow the correct format:
+- Checks for required files (SKILL.md)
+- Validates frontmatter fields
+- Verifies recommended sections
+- Reports errors and warnings
+
+Returns exit code 1 if validation fails (useful for CI/CD).
+
+### `npm run sync`
+Syncs all skills from `./skills/` to `~/.claude/skills/` for use with Claude Code.
+- Creates the Claude skills directory if it doesn't exist
+- Copies all skill files recursively
+- Reports sync status for each skill
+
+### `npm run sync:watch`
+Same as `npm run sync` but watches for changes and automatically re-syncs.
+Useful during development when you're actively editing skills.
+
+### `npm run clean`
+Removes all synced skills from `~/.claude/skills/` directory.
+Useful for cleanup or testing fresh installations.
+
+### `npm run test`
+Alias for `npm run validate`. Runs validation checks on all skills.
 
 ## Skill Structure
 
