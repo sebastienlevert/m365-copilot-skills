@@ -14,6 +14,9 @@ This comprehensive skill provides expert guidance on the Microsoft 365 Copilot a
 
 ⚠️ **For creating new projects, use the m365-agent-scaffolder skill first** ⚠️
 
+🚨 **CRITICAL DEPLOYMENT RULE** 🚨
+When using this skill to make edits to an agent, you MUST ALWAYS deploy the agent using `atk provision` before returning to the user. This ensures changes are immediately reflected in M365 Copilot. Never return to the user with undeployed changes.
+
 ---
 
 ## When to Use This Skill
@@ -111,6 +114,8 @@ Follow these step-by-step instructions when working with M365 Copilot agents:
 
 **Reference:** Follow [TypeSpec Best Practices](references/typespec-best-practices.md) and official [typespec-decorators.md](https://raw.githubusercontent.com/MicrosoftDocs/m365copilot-docs/refs/heads/main/docs/typespec-decorators.md)
 
+**⚠️ IMPORTANT:** After making any edits to TypeSpec code, you MUST compile and deploy the agent (Steps 4-5) before returning to the user.
+
 ### Step 4: Compile and Validate
 
 **Action:** Compile TypeSpec to validate the implementation:
@@ -159,6 +164,26 @@ npx -p @microsoft/m365agentstoolkit-cli@latest atk share --scope tenant --env de
 ```
 
 **Reference:** See [deployment.md](references/deployment.md) for sharing strategies
+
+---
+
+## Critical Workflow Rules
+
+### Always Deploy After Edits
+
+**RULE:** When making any changes to an agent (TypeSpec code, instructions, capabilities, API plugins), you MUST complete the following workflow before returning to the user:
+
+1. Compile the TypeSpec code: `npm run compile`
+2. Provision/deploy the agent: `npx -p @microsoft/m365agentstoolkit-cli@latest atk provision --env local`
+3. Confirm deployment succeeded and provide the test URL
+
+**Why this is critical:**
+- Changes are not reflected in M365 Copilot until the agent is redeployed
+- Users expect to test changes immediately after you make them
+- Undeployed changes create confusion and waste time
+- This ensures a complete, testable solution is always delivered
+
+**Never skip deployment:** Even for minor changes like updating instructions or conversation starters, always redeploy. M365 Copilot only sees the deployed version.
 
 ---
 
