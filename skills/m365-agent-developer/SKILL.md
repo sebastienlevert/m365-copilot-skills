@@ -31,46 +31,17 @@ Use this skill when:
 
 Do NOT use this skill for creating new empty projects - use the `m365-agent-scaffolder` skill instead.
 
-## Prerequisites
-
-Before using this skill, ensure the following requirements are met:
-
-**Required:**
-- Microsoft 365 tenant with Copilot license
-- Node.js (v18 or higher) and npm installed
-- Understanding of TypeSpec syntax
-
-**Recommended:**
-- Visual Studio Code with TypeSpec extension
-- Git for version control
-- Familiarity with Microsoft 365 services (SharePoint, Teams, OneDrive, etc.)
-- Understanding of OAuth2 and authentication flows
-
-**Knowledge Prerequisites:**
-- Microsoft 365 Copilot architecture and capabilities
-- TypeSpec language and decorators
-- REST API design principles
-- Security best practices (least privilege, credential management)
-
 ## Key References
 
 - **[TypeSpec Best Practices](references/typespec-best-practices.md)** - Official TypeSpec patterns and best practices for M365 Copilot agents
-- **[Architectural Patterns and Frameworks](references/patterns-and-frameworks.md)**
+- **[Architectural Patterns and Frameworks](references/patterns-and-frameworks.md)** - Design patterns for agent architecture
 - **[API Plugins](references/api-plugins.md)** - Integration patterns and best practices for API plugins
 - **[Conversation Design](references/conversation-design.md)** - Instruction patterns and conversation starter best practices
 - **[Security Guidelines](references/security-guidelines.md)** - Security patterns, compliance frameworks, and credential management
 - **[Deployment](references/deployment.md)** - Complete ATK CLI workflows, environment management, and CI/CD patterns
 - **[Common Pitfalls](references/common-pitfalls.md)** - Anti-patterns and solutions in M365 Copilot agent development
-
-## Table of Contents
-
-1. [Overview](#overview)
-2. [Architectural Design](#architectural-design)
-3. [TypeSpec for Microsoft 365 Copilot Best Practices](#typespec-for-microsoft-365-copilot-best-practices)
-4. [Lifecycle management and ATK CLI best practices](#lifecycle-management-and-atk-cli-best-practices)
-5. [Interaction Guidelines](#interaction-guidelines)
-6. [Architectural Principles](#architectural-principles)
-7. [Remember](#remember)
+- **[Best Practices](references/best-practices.md)** - Comprehensive best practices for security, performance, testing, and more
+- **[Examples](references/examples.md)** - Common workflow examples and scripts
 
 ---
 
@@ -181,177 +152,62 @@ npx -p @microsoft/m365agentstoolkit-cli@latest atk share --scope tenant --env de
 
 **Never skip deployment:** Even for minor changes like updating instructions or conversation starters, always redeploy. M365 Copilot only sees the deployed version.
 
+### Always Clean Up Unused Files
+
+**RULE:** Every time you work on an agent project, check for and remove unused or obsolete files:
+
+1. **Check for orphaned files:** Look for files not referenced anywhere in the project
+2. **Remove generated artifacts:** Delete old build outputs, temp files, and stale generated code
+3. **Clean unused dependencies:** Remove unused imports and dependencies
+4. **Delete obsolete documentation:** Remove outdated docs that no longer apply
+
+**Files to check and potentially remove:**
+- `TODO.md` or planning files no longer needed
+- Old backup files (`.bak`, `.old`, `.orig`)
+- Unused TypeSpec files not imported anywhere
+- Stale environment files (`.env.old`, `.env.backup`)
+- Empty or placeholder files
+- Commented-out code blocks that will never be used
+- Unused model definitions or operations
+
+**Why this is critical:**
+- Clean projects are easier to understand and maintain
+- Unused files create confusion about what's active
+- Old files may contain outdated patterns or security issues
+- Smaller projects are faster to compile and deploy
+
+**Before returning to the user:** Always verify the project contains only necessary, actively-used files.
+
 ---
 
 ## Best Practices
 
 Follow these best practices for successful M365 Copilot agent development:
 
-### Security
+| Category | Key Focus |
+|----------|-----------|
+| **Security** | Least privilege scoping, credential management, input validation |
+| **Performance** | Scoped queries, efficient API design, caching strategies |
+| **Error Handling** | Graceful degradation, clear messages, retry logic |
+| **Testing** | Conversation starters, edge cases, security testing |
+| **Compliance** | Data residency, retention policies, RBAC |
+| **Maintainability** | Documentation, naming conventions, version control |
+| **Conversation Design** | Clear instructions, actionable starters, appropriate tone |
+| **Deployment** | Environment strategy, CI/CD, version management |
 
-- **Principle of Least Privilege:** Always scope capabilities to the minimum necessary resources
-- **Credential Management:** Use `@authReferenceId` for production environments (see [typespec-authentication.md](https://raw.githubusercontent.com/MicrosoftDocs/m365copilot-docs/refs/heads/main/docs/typespec-authentication.md))
-- **Input Validation:** Validate all user inputs and API responses
-- **PII Handling:** Follow data protection regulations when handling personal information
-- **Audit Logging:** Implement comprehensive audit trails for all agent actions
-- **Secret Storage:** Never hardcode credentials; use Azure Key Vault or environment variables
-
-**Reference:** [security-guidelines.md](references/security-guidelines.md)
-
-### Performance
-
-- **Scoped Queries:** Use scoped capabilities to reduce query time and improve response quality
-- **Efficient API Design:** Design API plugins with pagination and filtering
-- **Caching Strategy:** Implement appropriate caching for frequently accessed data
-- **Response Time:** Keep operations under 30 seconds to avoid timeouts
-- **Batch Operations:** Use batch APIs when processing multiple items
-
-### Error Handling
-
-- **Graceful Degradation:** Handle errors without breaking the conversation flow
-- **Clear Error Messages:** Provide actionable error messages to users
-- **Retry Logic:** Implement retry mechanisms for transient failures
-- **Fallback Behavior:** Define fallback behavior when capabilities are unavailable
-- **Error Logging:** Log errors with sufficient context for troubleshooting
-
-### Testing
-
-- **Test All Conversation Starters:** Verify each starter works as intended
-- **Test Edge Cases:** Test with missing data, invalid inputs, and error conditions
-- **Security Testing:** Verify scoping and permission controls
-- **Cross-Environment Testing:** Test in dev, staging, and production environments
-- **User Acceptance Testing:** Conduct UAT with actual users before production release
-
-### Compliance
-
-- **Data Residency:** Consider data residency requirements for multi-region deployments
-- **Retention Policies:** Follow organizational data retention policies
-- **Access Controls:** Implement role-based access controls (RBAC)
-- **Compliance Frameworks:** Follow relevant frameworks (GDPR, HIPAA, SOC 2, etc.)
-- **Documentation:** Maintain compliance documentation and audit trails
-
-### Maintainability
-
-- **Documentation:** Add `@doc` decorators to all operations, models, and properties
-- **Naming Conventions:** Use PascalCase for models/enums, camelCase for properties/actions
-- **Code Organization:** Separate concerns (capabilities, API plugins, models)
-- **Version Control:** Use semantic versioning for shared agents
-- **Change Management:** Document changes and maintain changelog
-
-### Conversation Design
-
-- **Specific Instructions:** Write directive instructions with clear role definition
-- **Actionable Starters:** Create 3-5 specific, actionable conversation starters
-- **Clear Boundaries:** Define what the agent can and cannot do
-- **Appropriate Tone:** Match tone to audience and context
-- **Confirmation Patterns:** Require confirmation for destructive or sensitive actions
-
-**Reference:** [conversation-design.md](references/conversation-design.md)
-
-### Deployment
-
-- **Environment Strategy:** Use separate environments for dev, staging, and production
-- **CI/CD Integration:** Automate testing and deployment using ATK CLI
-- **Version Management:** Bump versions before re-provisioning shared agents
-- **Rollback Plan:** Have a rollback strategy for failed deployments
-- **Monitoring:** Implement monitoring and alerting for production agents
-
-**Reference:** [deployment.md](references/deployment.md)
+**Reference:** [best-practices.md](references/best-practices.md) for detailed guidelines.
 
 ---
 
 ## Examples
 
-### Example 1: Compile and Validate TypeSpec
+Common workflow examples for M365 Copilot agent development:
 
-Basic workflow for developing and validating TypeSpec code without provisioning:
+| Example | Description |
+|---------|-------------|
+| **Compile and Validate** | Local TypeSpec validation before deployment |
+| **Development and Provisioning** | Full dev workflow with test URL |
+| **Provision and Share** | Deploy and share agent with tenant users |
+| **Package for Distribution** | Create distributable package for production |
 
-```bash
-# Install dependencies
-npm install
-
-# Generate environment configuration
-npm run generate:env
-
-# Compile TypeSpec to validate implementation
-npm run compile
-```
-
-**Use case:** Local development and validation of TypeSpec syntax and decorators before deployment.
-
----
-
-### Example 2: Development and Provisioning
-
-Complete workflow for provisioning an agent to a development environment:
-
-```bash
-# Install dependencies
-npm install
-
-# Generate environment configuration
-npm run generate:env
-
-# Compile TypeSpec
-npm run compile
-
-# Provision agent to development environment
-npx -p @microsoft/m365agentstoolkit-cli@latest atk provision --env local
-```
-
-**Result:** Returns a test URL like `https://m365.cloud.microsoft/chat/?titleId=U_abc123xyz` to test the agent in Microsoft 365 Copilot.
-
-**Use case:** Testing agent functionality in a live environment during development.
-
----
-
-### Example 3: Provision and Share Agent
-
-Workflow for provisioning and sharing an agent with your organization:
-
-```bash
-# Install dependencies
-npm install
-
-# Generate environment configuration
-npm run generate:env
-
-# Compile TypeSpec
-npm run compile
-
-# Provision agent to target environment
-npx -p @microsoft/m365agentstoolkit-cli@latest atk provision --env dev
-
-# Share agent with tenant users
-npx -p @microsoft/m365agentstoolkit-cli@latest atk share --scope tenant --env dev
-```
-
-**Result:** Agent becomes available to all users in the Microsoft 365 tenant.
-
-**Use case:** Deploying a shared agent for organizational use after testing and validation.
-
----
-
-### Example 4: Package Agent for Distribution
-
-Workflow for creating an agent package for distribution:
-
-```bash
-# Install dependencies
-npm install
-
-# Generate environment configuration
-npm run generate:env
-
-# Compile TypeSpec
-npm run compile
-
-# Package agent for distribution
-npx -p @microsoft/m365agentstoolkit-cli@latest atk package --env prod
-```
-
-**Result:** Creates a distributable package file that can be uploaded to the Microsoft 365 admin center or shared externally.
-
-**Use case:** Creating a final package for production deployment or external distribution.
-
----
+**Reference:** [examples.md](references/examples.md) for complete workflow scripts.

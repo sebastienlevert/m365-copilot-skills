@@ -27,7 +27,7 @@ npx -p @microsoft/m365agentstoolkit-cli@latest atk new -n <project-name> -c decl
 | `--template anything` | DOES NOT EXIST - there is no --template flag |
 | `--template declarative-copilot` | DOES NOT EXIST - this is completely made up |
 | `--template m365-agent` | DOES NOT EXIST - this is completely made up |
-| Any command without `npx -p @microsoft/m365agentstoolkit-cli@latest` prefix | WILL FAIL - atk is not globally installed |
+| Any command without `npx -p @microsoft/m365agentstoolkit-cli@latest` prefix | WILL FAIL - atk might not be installed globally |
 
 ### CORRECT vs WRONG
 
