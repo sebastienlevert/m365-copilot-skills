@@ -4,7 +4,7 @@ Thank you for your interest in contributing to this project! Contributions are w
 
 ## Creating a New Skill
 
-The easiest way to create a new skill is to use the [skill-creator](https://github.com/anthropics/courses/tree/master/claude_skills/skills/skill-creator) skill. This skill guides you through creating effective skills with proper structure, frontmatter, and best practices.
+The easiest way to create a new skill is to use the [skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator) skill. This skill guides you through creating effective skills with proper structure, frontmatter, and best practices.
 
 Simply ask your AI coding agent:
 
