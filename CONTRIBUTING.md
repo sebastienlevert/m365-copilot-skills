@@ -2,6 +2,14 @@
 
 Thank you for your interest in contributing to this project! Contributions are welcome and appreciated.
 
+## Creating a New Skill
+
+The easiest way to create a new skill is to use the [skill-creator](https://github.com/anthropics/courses/tree/master/claude_skills/skills/skill-creator) skill. This skill guides you through creating effective skills with proper structure, frontmatter, and best practices.
+
+Simply ask your AI coding agent:
+
+> "Use the skill-creator skill to create a new M365 Copilot skill"
+
 ## How to Contribute
 
 1. **Fork** the repository
