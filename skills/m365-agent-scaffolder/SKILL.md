@@ -6,26 +6,56 @@ compatibility: Designed for Microsoft 365 Copilot agents development on develope
 
 # M365 Agent Scaffolder
 
-🚨 **CRITICAL: EXACT COMMAND REQUIRED** 🚨
+## ⛔ STOP - READ THIS FIRST ⛔
 
-**ALWAYS use this EXACT command to scaffold projects:**
+### THE ONLY VALID COMMAND
+
+Copy this command EXACTLY. Replace `<project-name>` with the user's project name:
+
 ```bash
 npx -p @microsoft/m365agentstoolkit-cli@latest atk new -n <project-name> -c declarative-agent -with-plugin type-spec -i false
 ```
 
-**NEVER use these commands (they DO NOT EXIST):**
-- ❌ `atk init` - THIS COMMAND DOES NOT EXIST
-- ❌ `atk create` - THIS COMMAND DOES NOT EXIST
-- ❌ `atk scaffold` - THIS COMMAND DOES NOT EXIST
-- ❌ Any command with `--template` flag - NOT VALID
+### FORBIDDEN COMMANDS - THESE DO NOT EXIST
 
-The ONLY valid scaffolding command is `npx -p @microsoft/m365agentstoolkit-cli@latest atk new` with the exact parameters shown above.
+| ❌ INVALID COMMAND | WHY IT FAILS |
+|-------------------|--------------|
+| `atk init` | DOES NOT EXIST - there is no init command |
+| `atk init --template` | DOES NOT EXIST - there is no init command or --template flag |
+| `atk create` | DOES NOT EXIST - there is no create command |
+| `atk scaffold` | DOES NOT EXIST - there is no scaffold command |
+| `--template anything` | DOES NOT EXIST - there is no --template flag |
+| `--template declarative-copilot` | DOES NOT EXIST - this is completely made up |
+| `--template m365-agent` | DOES NOT EXIST - this is completely made up |
+| Any command without `npx -p @microsoft/m365agentstoolkit-cli@latest` prefix | WILL FAIL - atk is not globally installed |
+
+### CORRECT vs WRONG
+
+✅ **CORRECT:**
+```bash
+npx -p @microsoft/m365agentstoolkit-cli@latest atk new -n my-agent -c declarative-agent -with-plugin type-spec -i false
+```
+
+❌ **WRONG (DO NOT USE):**
+```bash
+atk init my-agent --template declarative-copilot
+```
+
+❌ **WRONG (DO NOT USE):**
+```bash
+atk init my-agent --template m365-agent
+```
+
+❌ **WRONG (DO NOT USE):**
+```bash
+atk create my-agent
+```
 
 ---
 
-⚠️ **QUICK PROJECT CREATION ONLY** ⚠️
+## Quick Summary
 
-This skill does ONE thing: creates new M365 Copilot agent project structures using ATK CLI. It:
+This skill does ONE thing: creates new M365 Copilot agent project structures. It:
 1. Collects minimal required information
 2. Scaffolds the project using ATK CLI
 3. Automatically continues to m365-agent-developer skill for implementation
@@ -97,18 +127,29 @@ What would you like to name your M365 Copilot agent project?
 
 **Action:** Execute the scaffolding command, then move files from the ATK-created subfolder to the current directory.
 
-🚨 **CRITICAL: USE THIS EXACT COMMAND - NO VARIATIONS** 🚨
+## ⛔ COMMAND REMINDER - COPY EXACTLY ⛔
 
 **Commands to execute sequentially:**
 
-1. **Create the project with ATK CLI (EXACT COMMAND - DO NOT MODIFY):**
+1. **Create the project (COPY THIS EXACT COMMAND):**
+
 ```bash
 npx -p @microsoft/m365agentstoolkit-cli@latest atk new -n <project-name> -c declarative-agent -with-plugin type-spec -i false
 ```
 
-⚠️ **WARNING:** Do NOT use `atk init`, `atk create`, `atk scaffold`, or any other command. These commands DO NOT EXIST. The ONLY valid command is `atk new` with the exact parameters above.
+**BEFORE YOU RUN ANY COMMAND, VERIFY:**
+- ✅ Command starts with `npx -p @microsoft/m365agentstoolkit-cli@latest`
+- ✅ Command uses `atk new` (NOT `atk init`, NOT `atk create`)
+- ✅ Command has `-c declarative-agent` (NOT `--template`)
+- ✅ Command has `-with-plugin type-spec`
+- ✅ Command has `-i false`
 
-**Parameters (DO NOT CHANGE):**
+**IF YOUR COMMAND LOOKS LIKE ANY OF THESE, STOP - IT IS WRONG:**
+- ❌ `atk init ...` → WRONG, use `atk new`
+- ❌ `--template ...` → WRONG, use `-c declarative-agent`
+- ❌ Missing `npx -p @microsoft/m365agentstoolkit-cli@latest` → WRONG
+
+**Parameters:**
 - `-n <project-name>`: The project name provided by the user (ONLY parameter to customize)
 - `-c declarative-agent`: Create a declarative agent (REQUIRED - do not change)
 - `-with-plugin type-spec`: Include TypeSpec plugin scaffolding (REQUIRED - do not change)

@@ -48,7 +48,7 @@ npx skills add sebastienlevert/m365-copilot-skills/m365-agent-developer
 Alternatively, you can manually install the skills:
 
 1. Clone this repository
-2. Copy the desired skill folders to your agent's skills directory (e.g., `~/.claude/skills/` for Claude Code)
+2. Copy the desired skill folders to your agent's skills directory (e.g., `~/.claude/skills/` for Claude Code, `~/.copilot/skills/` for GitHub Copilot, `~/.opencode/skills/` for OpenCode)
 3. The skills will automatically be available when working on M365 Copilot agent projects
 
 ## Contributing
@@ -58,7 +58,3 @@ Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md)
 ## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-Copyright (c) 2025 Sebastien Levert
-
-Built with love for the Microsoft 365 developer community

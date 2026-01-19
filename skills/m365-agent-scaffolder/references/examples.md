@@ -2,6 +2,30 @@
 
 This document provides examples of how to use the m365-agent-scaffolder skill.
 
+## ⛔ CRITICAL: Command Format
+
+**THE ONLY VALID COMMAND FORMAT:**
+```bash
+npx -p @microsoft/m365agentstoolkit-cli@latest atk new -n <project-name> -c declarative-agent -with-plugin type-spec -i false
+```
+
+**NEVER USE THESE (THEY DO NOT EXIST):**
+```bash
+# ❌ WRONG - atk init does not exist
+atk init my-project --template declarative-copilot
+
+# ❌ WRONG - atk init does not exist
+atk init my-project --template m365-agent
+
+# ❌ WRONG - --template flag does not exist
+atk new my-project --template anything
+
+# ❌ WRONG - missing npx prefix
+atk new -n my-project -c declarative-agent
+```
+
+---
+
 ## Example 1: Basic M365 Project Scaffolding
 
 **User:** "Create a new M365 Copilot agent project"
@@ -19,7 +43,7 @@ User: sales-assistant
 # Check directory is empty
 ls -A
 
-# Create project
+# Create project - USE THIS EXACT COMMAND FORMAT
 npx -p @microsoft/m365agentstoolkit-cli@latest atk new -n sales-assistant -c declarative-agent -with-plugin type-spec -i false
 
 # Move files to current directory
