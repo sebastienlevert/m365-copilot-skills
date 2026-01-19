@@ -6,6 +6,23 @@ compatibility: Designed for Microsoft 365 Copilot agents development on develope
 
 # M365 Agent Scaffolder
 
+🚨 **CRITICAL: EXACT COMMAND REQUIRED** 🚨
+
+**ALWAYS use this EXACT command to scaffold projects:**
+```bash
+npx -p @microsoft/m365agentstoolkit-cli@latest atk new -n <project-name> -c declarative-agent -with-plugin type-spec -i false
+```
+
+**NEVER use these commands (they DO NOT EXIST):**
+- ❌ `atk init` - THIS COMMAND DOES NOT EXIST
+- ❌ `atk create` - THIS COMMAND DOES NOT EXIST
+- ❌ `atk scaffold` - THIS COMMAND DOES NOT EXIST
+- ❌ Any command with `--template` flag - NOT VALID
+
+The ONLY valid scaffolding command is `npx -p @microsoft/m365agentstoolkit-cli@latest atk new` with the exact parameters shown above.
+
+---
+
 ⚠️ **QUICK PROJECT CREATION ONLY** ⚠️
 
 This skill does ONE thing: creates new M365 Copilot agent project structures using ATK CLI. It:
@@ -80,18 +97,22 @@ What would you like to name your M365 Copilot agent project?
 
 **Action:** Execute the scaffolding command, then move files from the ATK-created subfolder to the current directory.
 
+🚨 **CRITICAL: USE THIS EXACT COMMAND - NO VARIATIONS** 🚨
+
 **Commands to execute sequentially:**
 
-1. **Create the project with ATK CLI:**
+1. **Create the project with ATK CLI (EXACT COMMAND - DO NOT MODIFY):**
 ```bash
 npx -p @microsoft/m365agentstoolkit-cli@latest atk new -n <project-name> -c declarative-agent -with-plugin type-spec -i false
 ```
 
-**Parameters:**
-- `-n <project-name>`: The project name provided by the user
-- `-c declarative-agent`: Create a declarative agent
-- `-with-plugin type-spec`: Include TypeSpec plugin scaffolding
-- `-i false`: Non-interactive mode (no prompts)
+⚠️ **WARNING:** Do NOT use `atk init`, `atk create`, `atk scaffold`, or any other command. These commands DO NOT EXIST. The ONLY valid command is `atk new` with the exact parameters above.
+
+**Parameters (DO NOT CHANGE):**
+- `-n <project-name>`: The project name provided by the user (ONLY parameter to customize)
+- `-c declarative-agent`: Create a declarative agent (REQUIRED - do not change)
+- `-with-plugin type-spec`: Include TypeSpec plugin scaffolding (REQUIRED - do not change)
+- `-i false`: Non-interactive mode (REQUIRED - do not change)
 
 **Note:** ATK will create a subfolder named `<project-name>` with all project files.
 

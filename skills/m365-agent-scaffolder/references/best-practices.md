@@ -39,6 +39,17 @@ Follow these best practices when scaffolding new M365 Copilot agent projects.
 
 ## Command Execution
 
+🚨 **CRITICAL: EXACT COMMAND REQUIRED** 🚨
+
+- **Use ONLY This Exact Command:**
+  ```bash
+  npx -p @microsoft/m365agentstoolkit-cli@latest atk new -n <project-name> -c declarative-agent -with-plugin type-spec -i false
+  ```
+- **NEVER Use These Commands (THEY DO NOT EXIST):**
+  - ❌ `atk init` - DOES NOT EXIST
+  - ❌ `atk create` - DOES NOT EXIST
+  - ❌ `atk scaffold` - DOES NOT EXIST
+  - ❌ Any command with `--template` flag - NOT VALID
 - **Always Use Full ATK CLI Command:** Never abbreviate or use shortcuts
   - Full command: `npx -p @microsoft/m365agentstoolkit-cli@latest atk new`
   - Ensures latest version is used
