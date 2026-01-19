@@ -2,10 +2,6 @@
 name: m365-agent-scaffolder
 description: Quickly scaffolds new Microsoft 365 Copilot declarative agent (M365 agent, copilot agent, agent, declarative copilot, copilot) projects using ATK CLI. Collects project information and creates the initial project structure. Use only when creating a new empty M365 Copilot agent project from scratch.
 compatibility: Designed for Microsoft 365 Copilot agents development on developer platforms supporting Agent Skills.
-metadata:
-  authors:
-    - sebastienlevert
-  version: 2.0.0
 ---
 
 # M365 Agent Scaffolder

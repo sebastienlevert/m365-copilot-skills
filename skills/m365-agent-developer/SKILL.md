@@ -2,10 +2,6 @@
 name: m365-agent-developer
 description: Designs, implements, and deploys Microsoft 365 Copilot agents using TypeSpec and ATK CLI. Provides architectural guidance, capability configuration, security patterns, and lifecycle management. Use when developing M365 Copilot agents, working with TypeSpec, or managing agent deployments. For creating new projects, use the m365-agent-scaffolder skill.
 compatibility: Designed for Microsoft 365 Copilot agents development on developer platforms supporting Agent Skills.
-metadata:
-  authors:
-    - sebastienlevert
-  version: 1.0.0
 ---
 
 # M365 Agent Developer
